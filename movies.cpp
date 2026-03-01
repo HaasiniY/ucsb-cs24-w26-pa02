@@ -23,16 +23,16 @@ double Movie::getRating() const{
 }
 
 void orderMovieRating(const vector<string> & pre, const vector<Movie>& movie, 
-        unordered_map<string, priority_queue<Movie, vector<Movie>, CompareMovieRating>>& map){
+        unordered_map<string, 
+        priority_queue<Movie, vector<Movie>, CompareMovieRating>>& map){
 
     unordered_set<string> uniquePrefixes(pre.begin(), pre.end());
 
-    for(const string& p: uniquePrefixes){
-        int len = p.length();
+    for(const Movie& m: movie){
+        const string& name = m.getName();
 
-        for(const Movie &m : movie){
-            const string& name = m.getName();
-            
+        for(const string& p: uniquePrefixes){
+            int len = p.length();
             if(name.size() >= len && name.compare(0, len, p) == 0){
                 map[p].push(m);
             }
