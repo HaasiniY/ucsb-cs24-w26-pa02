@@ -88,41 +88,33 @@ int main(int argc, char** argv){
 
     //auto duration = chrono::duration_cast<chrono::milliseconds>(end - start); 
     //cout << "Runtime: " << duration.count() << " ms" << endl;
-    bool isPart2a = (argc == 3); 
-    bool isPart2b = (argc == 4);
+   
 
 
-    if(isPart2a){
-        for(const string &prefix : prefixes){
-            auto pq = map[prefix];
 
-        /*if (pq.empty()) { 
+    for(const string &prefix : prefixes){
+        auto pq = map[prefix];
+
+        if (pq.empty()) { 
             cout << "No movies found with prefix " << prefix << endl; 
-            cout << endl;
-            continue; 
-        }*/
-
-            while(!pq.empty()){
-                Movie m = pq.top();
-                pq.pop();
-                cout << m.getName() << ", " << m.getRating() << endl;
-            }
-            cout << endl;
+            continue;
         }
+
+        while(!pq.empty()){
+            Movie m = pq.top();
+            pq.pop();
+            cout << m.getName() << ", " << m.getRating() << endl;
+        }
+        cout << endl;
     }
     
-    if(isPart2b){
-        for(const string &prefix : prefixes){
-            auto pq = map[prefix];
+ 
+    for(const string &prefix : prefixes){
+        auto pq = map[prefix];
 
-            if(pq.empty()){
-                cout << "No movies found with prefix "<< prefix << endl;
-            }
-
-            if(!pq.empty()){
-                Movie m = pq.top();
-                cout << "Best movie with prefix " << prefix << " is: " << m.getName() << " with rating " << std::fixed << std::setprecision(1) << m.getRating() << endl;
-            }
+        if(!pq.empty()){
+            Movie m = pq.top();
+            cout << "Best movie with prefix " << prefix << " is: " << m.getName() << " with rating " << std::fixed << std::setprecision(1) << m.getRating() << endl;
         }
     }
     
