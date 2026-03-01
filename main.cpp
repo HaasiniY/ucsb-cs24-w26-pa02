@@ -88,9 +88,6 @@ int main(int argc, char** argv){
 
     //auto duration = chrono::duration_cast<chrono::milliseconds>(end - start); 
     //cout << "Runtime: " << duration.count() << " ms" << endl;
-   
-
-
 
     for(const string &prefix : prefixes){
         auto pq = map[prefix];
@@ -111,6 +108,10 @@ int main(int argc, char** argv){
  
     for(const string &prefix : prefixes){
         auto pq = map[prefix];
+
+        if(pq.empty()){
+            continue;
+        }
 
         if(!pq.empty()){
             Movie m = pq.top();
