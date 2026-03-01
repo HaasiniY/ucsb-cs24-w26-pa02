@@ -2,6 +2,7 @@
 #include <string>
 #include <queue>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 Movie::Movie(string n, double r) : name(n), rating(r) {};
@@ -23,9 +24,13 @@ double Movie::getRating() const{
 
 void orderMovieRating(const vector<string> & pre, const vector<Movie>& movie, 
         unordered_map<string, priority_queue<Movie, vector<Movie>, CompareMovieRating>>& map){
-    for(const string p: pre){
+
+    unordered_set<string> uniquePrefixes(pre.begin(), pre.end());
+
+    for(const string& p: uniquePrefixes){
         int len = p.length();
-        for(Movie m : movie){
+
+        for(const Movie &m : movie){
             const string& name = m.getName();
             
             if(name.size() >= len && name.compare(0, len, p) == 0){
