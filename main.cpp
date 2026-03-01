@@ -88,8 +88,8 @@ int main(int argc, char** argv){
 
     //auto duration = chrono::duration_cast<chrono::milliseconds>(end - start); 
     //cout << "Runtime: " << duration.count() << " ms" << endl;
-    bool isPart2b = (prefixes.size() == 1); 
-    bool isPart2a = !isPart2b;
+    bool isPart2a = (argc == 3); 
+    bool isPart2b = (argc == 4);
 
 
     if(isPart2a){
